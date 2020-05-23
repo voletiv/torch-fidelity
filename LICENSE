@@ -20,5 +20,10 @@ Copyright 2020 Vikram Voleti
 
 May 13, 2020
 - (multiple files) Modified imports from absolute 'torch_fidelity.' to relative '.', so as to be used even without installing
-- (feature_extractor_inceptionv3.py) Modified default `feature_extractor_weights_path` to `os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pt_inception-2015-12-05-6726825d.pth')`
 - (feature_extractor_inceptionv3.py, utils.py) Added support for single 4-dim uint8 tensor as input (in addition to string or Dataset)
+- (utils.py) Added support for Subset (torch.utils.data.Subset)
+- (utils.py) Added support for Dataset that returns multiple values as a list or tuple (eg.: [images, target]): extracts the first element
+- (metrics.py) Added more efficient computation of FID if kid==False (input_to_statistics without saving features of input2)
+- (multiple) Added `cache_features` arg, to not store features in cache when False
+- (utils.py) Added support for datasets that output multiple arguments (such as (images, targets)), extracts the first element (images)
+- (utils.py) Added support for datasets that output non-uint8 images, converts them to uint8 after checking image range
